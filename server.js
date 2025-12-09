@@ -42,6 +42,21 @@ function saveOrders() {
 loadOrders();
 
 // --- MIDDLEWARE ---
+// --- AUTH CONFIGURATION ---
+// ⚠️ WARNING: Use Bcrypt to hash this password in a real production app!
+const CORRECT_PASSWORD = 'Twinie2025'; 
+
+/**
+ * Middleware to check if the user is authenticated via session.
+ * If not, redirects to the login page.
+ */
+function requireAuth(req, res, next) {
+    if (req.session.isAuthenticated) {
+        next(); // User is logged in, proceed to the requested route
+    } else {
+        res.redirect('/login'); // User is not logged in, redirect to login
+    }
+}
 
 // --- MIDDLEWARE ---
 app.set('view engine', 'ejs');
@@ -85,10 +100,10 @@ app.post('/checkout', (req, res) => {
     const promo = req.body.promoCode;
 
     // Price Logic
-    let price = 500;
+    let price = 2500;
     let discount = false;
     if (promo && promo.toUpperCase() === 'KEBTYE10') {
-        price = 450;
+        price = 2300;
         discount = true;
     }
     const total = qty * price;
@@ -135,7 +150,8 @@ app.get('/track-result', (req, res) => {
 });
 
 // 6. Admin
-app.get('/admin', (req, res) => {
+// 6. Admin Page (Renamed for Secrecy)
+app.get('/kebtye-secret-admin', (req, res) => {
     loadOrders();
     res.render('admin', { orderList: orders });
 });
@@ -159,14 +175,16 @@ app.post('/update-status', (req, res) => {
             }).catch(e => console.log("Notify Error:", e.message));
         }
     }
-    res.redirect('/admin');
+   // Inside app.post('/update-status')...
+res.redirect('/kebtye-secret-admin');
 });
 
 // 8. Delete
 app.post('/delete', (req, res) => {
     orders = orders.filter(o => o.id != req.body.idToDelete);
     saveOrders();
-    res.redirect('/admin');
+// Inside app.post('/delete')...
+res.redirect('/kebtye-secret-admin');
 });
 
 // 9. Root Redirect
@@ -174,4 +192,4 @@ app.get('/', (req, res) => res.redirect('/home'));
 
 // 10. Start Server
 const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));

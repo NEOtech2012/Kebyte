@@ -3,13 +3,21 @@
 <head>
     <title>Kebtye | Tasty & Crunchy Chin-Chin</title>
     <link rel="stylesheet" href="/style.css">
+    <link rel="icon" href="/logo.jpg" type="image/jpeg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="icon" href="/favicon.png" type="image/png">
 </head>
 <body style="background-color: #f4f6f8;">
-    
-    <%- include('partials/navbar') %>
-
+    <!-- PRIVATE ADMIN HEADER -->
+    <div style="background-color: #2c3e50; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white;">
+        <div style="font-size: 1.2rem; font-weight: bold;">
+            🔒 Kebtye HQ
+        </div>
+        <div>
+            <span style="margin-right: 20px; opacity: 0.8;">Welcome, Boss</span>
+            <a href="/home" style="color: white; text-decoration: none; border: 1px solid white; padding: 5px 15px; border-radius: 5px;">Go to Shop</a>
+        </div>
+    </div>
+    <!---End-PRIVATE ADMIN HEADER-->
     <div style="max-width: 1200px; margin: 30px auto; padding: 20px;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
             <h1 style="color: #2c3e50;"><i class="fas fa-user-shield"></i> Admin Dashboard</h1>

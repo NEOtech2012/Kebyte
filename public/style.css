@@ -417,3 +417,39 @@ button[type="submit"]:hover {
 @keyframes popIn { 0% { transform: scale(0); } 100% { transform: scale(1); } }
 @keyframes flash { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
 /* end of temu */
+/* =========================================
+   📱 MOBILE & TABLET RULES (The Magic)
+   ========================================= */
+
+@media (max-width: 768px) {
+    /* 1. Navbar: Stack logo and links */
+    nav {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    
+    nav div {
+        margin-top: 15px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    nav a { margin: 0 5px; font-size: 0.9rem; }
+
+    /* 2. Hero Text: Shrink big text */
+    .hero h1 { font-size: 2.5rem; }
+    .hero p { font-size: 1.1rem; }
+
+    /* 3. Forms: Less padding on phone */
+    form { padding: 20px; }
+
+    /* 4. Tracking Timeline */
+    .track-container { margin: 10px; }
+    .status-step { font-size: 0.7rem; }
+    
+    /* 5. Hide complex elements if needed */
+    .timeline-item { gap: 10px; }
+    .t-time { width: 50px; font-size: 0.7rem; }
+}
